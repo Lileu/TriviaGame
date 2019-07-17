@@ -2,14 +2,46 @@
 // VARIABLES
 // ==========================================================================
 // question object/properties/values
-var questions = {
-    
-}
+var triviaQuestions = [{
+    question: "Who does Tom Cruise play in Mission: Impossible?",
+    answerList: [ "Michael Wand", "Martin Riggs", "Ethan Hunt", "Bryan Mills" ],
+    correctAnswer: 2,
+    correctGif: "assets/images/tom1.gif",
+    incorrectGif: ""
+}, {
+    question: "Who does Tom Cruise play in Mission: Impossible?",
+    answerList: [ "Michael Wand", "Martin Riggs", "Ethan Hunt", "Bryan Mills" ],
+    correctAnswer: 2,
+    correctGif: "assets/images/tom1.gif",
+    incorrectGif: ""
+}, {
+    question: "Who does Tom Cruise play in Mission: Impossible?",
+    answerList: [ "Michael Wand", "Martin Riggs", "Ethan Hunt", "Bryan Mills" ],
+    correctAnswer: 2,
+    correctGif: "assets/images/tom1.gif",
+    incorrectGif: ""
+}, {
+    question: "Who does Tom Cruise play in Mission: Impossible?",
+    answerList: [ "Michael Wand", "Martin Riggs", "Ethan Hunt", "Bryan Mills" ],
+    correctAnswer: 2,
+    correctGif: "assets/images/tom1.gif",
+    incorrectGif: ""
+}, {
+    question: "Who does Tom Cruise play in Mission: Impossible?",
+    answerList: [ "Michael Wand", "Martin Riggs", "Ethan Hunt", "Bryan Mills" ],
+    correctAnswer: 2,
+    correctGif: "assets/images/tom1.gif",
+    incorrectGif: ""
+}];
 
 // game variables and methods
 var game = {
-    
-
+    questions: triviaQuestions
+    correctCount : 0,
+    inCorrectCount : 0,
+    unansweredCount: 0,
+    timer: 30,
+    currentQuestion: 0,
     
     
     // start game 
@@ -22,11 +54,11 @@ var game = {
         
     },
     // correct guess
-    correctAnswer: function() {
+    correctlyAnswered: function() {
         
     },
     // incorrect guess
-    incorrectAnswer: function() {
+    incorrectelyAnswered: function() {
         
     },
     
@@ -50,6 +82,9 @@ var game = {
 // MAIN PROCESS
 // ==========================================================================
 // $(document).ready(function(){
-
+$('#startButton').on('click', function(){
+    $(this).hide();
+    startGame();
+});
 
 // })
