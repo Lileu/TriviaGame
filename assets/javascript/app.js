@@ -6,7 +6,6 @@ $(document).ready(function() {
 
 $("#startButton").on('click', function(){
     $("#startButton").hide();
-
 })
     
 
@@ -32,17 +31,17 @@ var triviaQuestions = [{
     correctGif: "assets/images/jean1.gif",
     incorrectGif: "assets/images/jean2.gif"
 }, {
-    question: "?",
-    answerList: ["", "", "", ""],
-    correctAnswer: 2,
-    correctGif: "assets/images/tom1.gif",
-    incorrectGif: ""
-}, {
-    question: "?",
-    answerList: ["", "", "", ""],
-    correctAnswer: 2,
-    correctGif: "assets/images/tom1.gif",
-    incorrectGif: ""
+    question: "In which movie was the catchphrase 'Hasta la vista, baby!' first used by the Terminator?",
+    answerList: ["The Terminator", "Terminator 2: Judgment Day", "Terminator 3: Rise of the Machines", "Terminator Salvation (2009)"],
+    correctAnswer: 1,
+    correctGif: "assets/images/arnie1.gif",
+    incorrectGif: "assets/images/arnie2.gif",
+
+    question: "Who played John McClane's reluctant sidekick in Die Hard with a Vengeance?",
+    answerList: ["Danny De Vito", "Danny Glover", "Chuck Norris", "Samuel L. Jackson"],
+    correctAnswer: 3,
+    correctGif: "assets/images/bruce1.gif",
+    incorrectGif: "assets/images/bruce2.gif""
 }];
 
 // game variables and methods
