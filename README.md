@@ -14,6 +14,6 @@ https://lileu.github.io/triviagame/
 * 
 
 ## Stuff I learned
-*
+* mindful of feedback from last week's homework 'functions should always return a value, not be use to set an outside variable.'
 *
 * 
