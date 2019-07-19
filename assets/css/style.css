@@ -1,0 +1,46 @@
+    
+body,
+html {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  color: white;
+  background-image: URL('https://images.pexels.com/photos/56030/pyrite-pyrites-mineral-sulfide-56030.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1 {
+  color: darkmagenta;
+}
+
+
+ #startBtn {
+
+ }
+
+.container {
+  align-content: centre; 
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+    padding: 20px 20px 40px;
+    margin-bottom: auto;
+    border-radius: 10px;
+  }
+
+
+
+  #startBtn {
+    width: auto;
+    padding: 20px 40px;
+    position: relative;
+    margin-top: 100px;
+}
+.btn {
+     width: 100%;
+}
