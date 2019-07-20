@@ -11,9 +11,9 @@ https://lileu.github.io/triviagame/
 
 ## Stuff I used
 * css reset file (Meyerweb Reset)
-* 
+* giphy gifs
 
 ## Stuff I learned
-* mindful of feedback from last week's homework 'functions should always return a value, not be use to set an outside variable.'
-*
-* 
+* When pseudocoding, decompose by technical functionality instead of process/ui (contrary to BA approach)
+* How to insert debuggers into code and use inspector to debug/step through JavaScript and jQuery scripts
+* I need to block out a couple of days this week to revisit Javascript because my lack of understanding is a huge impediment to my progress/efficiency currently
