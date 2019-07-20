@@ -1,47 +1,53 @@
-    
-body,
-html {
-  font-family: "Roboto", sans-serif;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  color: white;
-  background-image: URL('https://wallup.net/wp-content/uploads/2014/08/battle-los-angeles-action-scene.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
+    body,
+    html {
+      font-family: "Roboto", sans-serif;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      color: white;
+      background-image: URL('https://wallup.net/wp-content/uploads/2014/08/battle-los-angeles-action-scene.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+    }
 
-h1 {
-  color: red;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+    h1 {
+      color: red;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
 
 
- /* #startBtn {
+    /* #startBtn {
 
  } */
 
-.container {
-  align-content: centre; 
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    margin-top: 30px;
-    padding: 20px 20px 40px;
-    margin-bottom: auto;
-    border-radius: 10px;
-  }
+    .container {
+      align-content: centre;
+      background-color: rgba(0, 0, 0, 0.7) !important;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      margin-top: 30px;
+      padding: 20px 20px 40px;
+      margin-bottom: auto;
+      border-radius: 10px;
+      
+    }
 
 
+    #instructions {
+      margin: 50px auto;
 
-  #startBtn {
-    width: auto;
-    padding: 20px 40px;
-    position: relative;
-    margin-top: 100px;
-}
-.btn {
-     width: 100%;
-}
+    }
+
+    #startBtn {
+      padding: 20px 40px;
+      position: relative;
+      margin-top: 20px;
+
+    }
+
+    .btn {
+      width: 100%;
+    }

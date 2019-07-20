@@ -35,102 +35,101 @@
 
    // game variables and methods
    var game = {
-           questions: triviaQuestions,
-           correctCount: 0,
-           inCorrectCount: 0,
-           unansweredCount: 0,
-           timer: 15,
-           currentQuestion: 0,
 
-           // count down
-           countdown: function () {
-               this.timer--;
-               $('#time-remaining').html(this.timer);
-               if (this.timer <= 0) {
-                   clearInterval(timer);
+       correctCount: 0,
+       inCorrectCount: 0,
+       unansweredCount: 0,
+       timer: 15,
+       currentQuestion: 0,
 
-               }
-           },
-
-           // start game 
-           startGame: function () {
-
-               timer = setInterval(this.countDown, 1000);
-               $('#game-body').html('<h2>' + questions[this.currentQuestion].question + '</h2>');
-
-               for (var i = 0; i < [this.currentQuestion].answerList.length; i++) {
-                   // var choices = $('<button>');
-                   // choices.text(triviaQuestions[currentQuestion].answerList[i]);
-                   $('answer-list').append('<button"class="answer-button" id="button-" ' + i + ' "data-name-" ' + questions[this.currentQuestion].answers[i] + '</button>');
-
-               }
-           },
-
-           // player clicks 
-           checkGuess: function (guess) {
+       // count down
+       countdown: function () {
+           this.timer--;
+           $('#time-remaining').html(this.timer);
+           if (this.timer <= 0) {
                clearInterval(timer);
-               if ($(guess.target).data("name") == questions[this.currentQuestion].correctAnswer) {
-                   this.correctlyAnswered();
-               } else {
-                   this.incorrectelyAnswered();
-               }
-           },
+           }
+       },
 
-           // correct guess
-           correctlyAnswered: function () {
-               clearInterval(timer);
-               $('#current-question').empty();
-               $('.answer-list').empty();
+       // start game 
+       startGame: function () {
+           questions = triviaQuestions;
+           timer = setInterval(this.countDown, 1000);
+           $('#timer').html('<h2 id="timer">' + timer + '</h2>');
+           $('#current-question').html('<h2>' + questions[this.currentQuestion].question + '</h2>');
 
-               this.correctCount++;
-               $('#game-body').html('<h2>Right on! You are correct!</h2>');
-               if (this.currentQuestion == this.questions.length - 1) {
-                   setTimeout(this.results, 2 * 1000);
-               }
-           },
+           for (var i = 0; i < questions[this.currentQuestion].answerList.length; i++) {
+               $('#game-answers').append('<button class="answer-button" id="button'+i+'" data-name-"' +questions[this.currentQuestion].answerList[i]+'">'+ questions[this.currentQuestion].answerList[i]+'</button>');
+               
 
-           // incorrect guess
-           incorrectelyAnswered: function () {
-               clearInterval(timer);
-               $('#current-question').empty();
-               $('.answer-list').empty();
 
-               this.inCorrectCount++;
-               $('#game-body').html('<h2>Awesome! Awesome guess, but you were incorrect.</h2>');
-               if (this.currentQuestion == this.questions.length - 1) {
-                   setTimeout(this.results, 2 * 1000);
-               }
-           },
-
-           // next question
-           nextQuestion: function () {
-               this.timer = 15;
-               $('#time-remaining').html(this.timer);
-               this.currentQuestion++;
-               this.startGame();
-           },
-
-           // time out game 
-           // show correct count, incorrect count, unanswer? option to restart by clicking
-           timeOut: function () {
-               clearInterval(timer);
-               $('#game-body').html('<h2>Too slow on the trigger there, you ran out on time!</h2>');
-               $('#game-body').append('<h3>The correct answer was: ' + questions[this.currentQuestion].correctAnswer + '</h3>');
-               if (this.currentQuestion == this.questions.length - 1) {
-                   setTimeout(this.results, 2 * 1000);
-               }
-           },
-           // display results
-           results: function () {
-               clearInterval(timer);
-               $('#game-body').html('<h2>GOOD JOB! You smashed it!</h2>');
-               $('#game-body').append('<h3>WINS: ' + this.correctCount + '</h3>');
-               $('#game-body').append('<h3>LOSSES: ' + this.inCorrectCount + '</h3>');
-               $('#game-body').append('<h3>MISSES ' + this.unansweredCount + '</h3>');
-               $('#game-body').append('<button id="reset">Reset game' + this.unansweredCount + '</h3>');
 
            }
        },
+
+       // player clicks 
+       checkGuess: function (guess) {
+           clearInterval(timer);
+           if ($(guess.target).data("name") == questions[this.currentQuestion].correctAnswer) {
+               this.correctlyAnswered();
+           } else {
+               this.incorrectelyAnswered();
+           }
+       },
+
+       // correct guess
+       correctlyAnswered: function () {
+           clearInterval(timer);
+           $('#current-question').empty();
+           $('.answer-list').empty();
+
+           this.correctCount++;
+           $('#game-body').html('<h2>Right on! You are correct!</h2>');
+           if (this.currentQuestion == this.questions.length - 1) {
+               setTimeout(this.results, 2 * 1000);
+           }
+       },
+
+       // incorrect guess
+       incorrectelyAnswered: function () {
+           clearInterval(timer);
+           $('#current-question').empty();
+           $('.answer-list').empty();
+
+           this.inCorrectCount++;
+           $('#game-body').html('<h2>Awesome! Awesome guess, but you were incorrect.</h2>');
+           if (this.currentQuestion == this.questions.length - 1) {
+               setTimeout(this.results, 2 * 1000);
+           }
+       },
+
+       // next question
+       nextQuestion: function () {
+           this.timer = 15;
+           $('#time-remaining').html(this.timer);
+           this.currentQuestion++;
+           this.startGame();
+
+       },
+
+       // time out game 
+       // show correct count, incorrect count, unanswer? option to restart by clicking
+       timeOut: function () {
+           clearInterval(timer);
+           $('#game-body').html('<h2>Too slow on the trigger there, you ran out on time!</h2>');
+           $('#game-body').append('<h3>The correct answer was: ' + questions[this.currentQuestion].correctAnswer + '</h3>');
+       },
+
+       // display results
+       results: function () {
+           clearInterval(timer);
+           $('#game-body').html('<h2>GOOD JOB! You smashed it!</h2>');
+           $('#game-body').append('<h3>WINS: ' + this.correctCount + '</h3>');
+           $('#game-body').append('<h3>LOSSES: ' + this.inCorrectCount + '</h3>');
+           $('#game-body').append('<h3>MISSES ' + this.unansweredCount + '</h3>');
+           $('#game-body').append('<button id="reset">Reset game' + this.unansweredCount + '</h3>');
+       },
+
        // reset game 
        reset: function () {
            this.inCorrectCount = 0;
@@ -139,18 +138,15 @@
            this.timer = 15;
            this.currentQuestion = 0;
        }
-    }
+   }
 
    // MAIN PROCESS
    // ==========================================================================
-   // $(document).ready(function() {
-   //     var gamebody = $("#game-body");
-   //     gamebody.html('<button type="button" class="btn btn-light btn-block" id="startBtn">Lets get started!</button>');
-   // });
 
-
-   $("#startButton").on('click', function () {
-       $("#startButton").hide();
+   $("#startBtn").on('click', function () {
+       $("#startBtn").hide();
+       $("#instructions").hide();
+       $("#game-question,#game-answers").show();
        game.startGame();
    })
 
