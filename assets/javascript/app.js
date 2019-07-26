@@ -41,21 +41,23 @@
        unansweredCount: 0,
        timer: 15,
        currentQuestion: 0,
+       intervalId: null, // [MARC] added intervalId so we can clear the interval later
 
        // count down
        countdown: function () {
            this.timer--;
-           $('#time-remaining').html(this.timer);
+           $('#timer').html(this.timer); // [MARC] changed #time-remaining to #timer as you don't have a #time-remaining element
            if (this.timer <= 0) {
-               clearInterval(timer);
+               clearInterval(this.intervalId); // [MARC] changed timer to this.intervalId
+               // [MARC] TODO if the time runs out you not only need to clear the interval but also move on to the next question
            }
        },
 
        // start game - buttons generated
        startGame: function () {
-           questions = triviaQuestions;
-           timer = setInterval(this.countDown, 1000);
-           $('#timer').html('<h2 id="timer">' + timer + '</h2>');
+           var questions = triviaQuestions; // [MARC] added `var` keyword here
+           this.intervalId = setInterval(this.countdown.bind(this), 1000); // [MARC] assigned the result of setInterval to this.intervalId, finxed capitalisation of `countdown` and bound countdown function to `this`
+           $('#timer').html('<h2 id="timer">' + this.timer + '</h2>'); // [MARC] used `this.timer` instead of timer
            $('#current-question').html('<h2>' + questions[this.currentQuestion].question + '</h2>');
 
            for (var i = 0; i < questions[this.currentQuestion].answerList.length; i++) {
@@ -65,9 +67,9 @@
 
        // player clicks - name derived from clicked button is compared to correct answer string
        checkGuess: function (guess) {
-           console.log(questions[this.currentQuestion].correctAnswer);
+           console.log(triviaQuestions[this.currentQuestion].correctAnswer); // [MARC] changed questions to triviaQuestions
            clearInterval(timer);
-           if ($(guess.target).data("name") == questions[this.currentQuestion].correctAnswer) {
+           if ($(guess.target).data("name") == triviaQuestions[this.currentQuestion].correctAnswer) { // [MARC] changed questions to triviaQuestions
                this.correctlyAnswered();
            } else {
                this.incorrectlyAnswered();
@@ -84,9 +86,9 @@
            this.correctCount++;
            $('#game-body').html('<h2>Right on! You are correct!</h2>');
            if (this.currentQuestion == 4) {
-               setTimeout(this.results, 2 * 1000);
+               setTimeout(this.results.bind(this), 2 * 1000);
            } else {
-               setTimeout(this.nextQuestion, 2 * 1000);
+               setTimeout(this.nextQuestion.bind(this), 2 * 1000);
            }
        },
 
@@ -100,9 +102,9 @@
            this.incorrectCount++;
            $('#game-body').html('<h2>Awesome... awesome guess, but you were incorrect.</h2>');
            if (this.currentQuestion == 4) {
-               setTimeout(this.results, 2 * 1000);
+               setTimeout(this.results.bind(this), 2 * 1000);
            } else {
-               setTimeout(this.nextQuestion, 2 * 1000);
+               setTimeout(this.nextQuestion.bind(this), 2 * 1000);
            }
        },
 
@@ -111,10 +113,10 @@
            this.timer = 15;
            $('#time-remaining').html(this.timer);
            this.currentQuestion++;
-           //  this.startGame();
+            this.startGame();
        },
 
-       // time out game 
+       // time out game
        // show correct count, incorrect count, unanswer? option to restart by clicking
        timeOut: function () {
            clearInterval(timer);
@@ -132,7 +134,7 @@
            $('#game-body').append('<button id="reset">Reset game' + this.unansweredCount + '</h3>');
        },
 
-       // reset game 
+       // reset game
        reset: function () {
            this.incorrectCount = 0;
            this.correctCount = 0;
